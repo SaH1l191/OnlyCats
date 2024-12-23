@@ -7,15 +7,15 @@ import {
     CardFooter,
     CardHeader,
     CardTitle,
-  } from "@/components/ui/card"
+} from "@/components/ui/card"
 
 interface FeatureProps {
     title: string;
     description: string;
     image: string;
 }
-
-const features: FeatureProps[] = [
+//both syntax works : ) 
+const features: { title: string, description: string, image: string }[] = [
     {
         title: "Expert Horse Care Tips",
         description:
@@ -60,23 +60,23 @@ const Features = () => {
                 ))}
             </div>
             <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
-            {features.map(({ title, description, image }) => (
-					<Card key={title} className='flex flex-col'>
-						<CardHeader>
-							<CardTitle>{title}</CardTitle>
-						</CardHeader>
+                {features.map(({ title, description, image }) => (
+                    <Card key={title} className='flex flex-col'>
+                        <CardHeader>
+                            <CardTitle>{title}</CardTitle>
+                        </CardHeader>
 
-						<CardContent>{description}</CardContent>
+                        <CardContent>{description}</CardContent>
 
-						<CardFooter className='mt-auto'>
-							<img
-								src={image}
-								alt='Feature Item'
-								className='rounded w-[250px] h-32 lg:w-[300px]  mx-auto z-0 select-none pointer-events-none'
-							/>
-						</CardFooter>
-					</Card>
-				))}
+                        <CardFooter className='mt-auto'>
+                            <img
+                                src={image}
+                                alt='Feature Item'
+                                className='rounded w-[250px] h-32 lg:w-[300px]  mx-auto z-0 select-none pointer-events-none'
+                            />
+                        </CardFooter>
+                    </Card>
+                ))}
             </div>
 
         </section>

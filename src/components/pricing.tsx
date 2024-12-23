@@ -176,7 +176,7 @@ export default function Pricing() {
 												"text-5xl font-bold tracking-tight text-black dark:text-white",
 												tier.discountPrice &&
 													tier.discountPrice[
-														frequency.value as keyof typeof tier.discountPrice
+													frequency.value as keyof typeof tier.discountPrice
 													]
 													? "line-through"
 													: ""

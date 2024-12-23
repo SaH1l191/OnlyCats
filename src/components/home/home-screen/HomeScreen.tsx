@@ -1,16 +1,19 @@
-"use client"
-import { LogoutLink } from '@kinde-oss/kinde-auth-nextjs'
+
+import BaseLayout from "@/components/BaseLayout";
 import React from 'react'
+import UserProfile from "./UserProfile";
+import Posts from "./Posts";
 
-const HomeScreen = () => {
+const HomeScreen = async () => {
+
+
+
+
   return (
-    <div>HomeScreen
-      <LogoutLink>
-      <p>Logout</p>
-
-      </LogoutLink>
-    
-    </div>
+    <BaseLayout>
+      <UserProfile />
+      <Posts />
+    </BaseLayout>
   )
 }
 

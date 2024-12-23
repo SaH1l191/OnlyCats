@@ -9,7 +9,7 @@ const HeroSection = () => {
                     src='/of-logo.svg'
                     alt='OnlyHorse Logo'
                     className='absolute -left-1/4 opacity-15 -bottom-52 lg:scale-150 xl:scale-105 scale-[2]
-            pointer-events-none select-none'
+                    pointer-events-none select-none'
                 />
                 <div className='flex flex-col gap-2 px-4 xl:ml-40 text-center md:text-start font-semibold'>
                     <Image

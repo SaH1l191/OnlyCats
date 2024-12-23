@@ -47,23 +47,23 @@ const Team = () => {
                 Meet the team that makes our farm a special place for horses and riders alike.
             </p>
             <div className=' grid md:grid-cols-2 lg:grid-cols-4 gap-8 gap-y-10'>
-            {teamList.map(({ description, imageUrl, name, position }) => (
-                <Card className='bg-muted/50 relative mt-7 flex flex-col justify-center items-center'>
-                    <CardHeader className='my-8 flex justify-center items-center pb-2'>
-							<img
-								src={imageUrl}
-								alt='Team member'
-								className='absolute -top-12 rounded-full w-24 h-24 aspect-square object-cover'
-							/>
-							<CardTitle className='text-center'>{name}</CardTitle>
-							<CardDescription className='text-primary'>{position}</CardDescription>
-						</CardHeader>
+                {teamList.map(({ description, imageUrl, name, position }) => (
+                    <Card className='bg-muted/50 relative mt-7 flex flex-col justify-center items-center'>
+                        <CardHeader className='my-8 flex justify-center items-center pb-2'>
+                            <img
+                                src={imageUrl}
+                                alt='Team member'
+                                className='absolute -top-12 rounded-full w-24 h-24 aspect-square object-cover'
+                            />
+                            <CardTitle className='text-center'>{name}</CardTitle>
+                            <CardDescription className='text-secondary-foreground'>{position}</CardDescription>
+                        </CardHeader>
 
-						<CardContent className='text-center pb-4 px-2'>
-							<p>{description}</p>
-						</CardContent>
-                </Card>
-            ))}
+                        <CardContent className='text-center pb-4 px-2'>
+                            <p>{description}</p>
+                        </CardContent>
+                    </Card>
+                ))}
             </div>
         </section>
     )
