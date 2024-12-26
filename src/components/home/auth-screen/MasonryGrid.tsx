@@ -27,7 +27,7 @@ const MasonryGrid = () => {
                             onMouseEnter={() => setHoverIndex(i)}
                             onMouseLeave={() => setHoverIndex(null)}
                             onMouseMove={(e) => handleMouseMove(e, i)}
-                            src={`/featured/featured${i + 1}.jpg`}
+                            src={`/featured/featured${i + 1}_.jpg`}
                             className='cursor-pointer mt-8 hover:scale-150 transition-transform duration-500 ease-in-out'
                             alt='Featured Horse'
                             width={500}

@@ -22,7 +22,7 @@ const BaseLayout = async ({
 			<Sidebar />
 
 			<div className='w-full lg:w-3/5 flex flex-col border-r'>{children}</div>
-			
+
 			{renderRightPanel && <SuggestedProducts />}
 		</div>
 	);

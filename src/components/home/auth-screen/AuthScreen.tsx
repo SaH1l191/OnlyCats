@@ -28,7 +28,7 @@ const AuthScreen = () => {
             <TodaysHighlight />
             <div className="mt-24">
               <p className="font-bold text-2xl md:text-5xl text-center tracking-tighter">
-                Meet the <RotatedText>Stars</RotatedText> of Our Farm
+                Meet the <RotatedText>Stars</RotatedText> of Our PlatForm
               </p>
 
               <MasonryGrid />

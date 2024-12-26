@@ -5,7 +5,7 @@ import React from 'react'
 const CoverImage = () => {
 	return (
 		<div className='h-44 overflow-hidden relative '>
-			<Image src={"/featured/featured10.jpg"} className="h-full object-cover pointer-events-none select-none" fill alt='Horse Cover Image' />
+			<Image src={"/featured/featured10_.jpg"} className="h-full object-cover pointer-events-none select-none" fill alt='Horse Cover Image' />
 			{/* now we are giving some shading from top */}
 			<div
 				className='absolute top-0 left-0 w-full h-full bg-gradient-to-b from-slate-800 to-transparent'

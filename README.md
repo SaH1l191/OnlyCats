@@ -4,3 +4,8 @@ kinde auth
 
 shadcn dark theme from shadcn next thems 
 npm install next-themes
+
+
+npm i prisma 
+npx prisma init 
+npx prisma db push

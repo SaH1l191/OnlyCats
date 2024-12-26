@@ -73,7 +73,7 @@ const Post = ({ post, isSubscribed, admin }: { post: any, isSubscribed: boolean,
             {
                 !isSubscribed && !post.isPublic && (
                     <div className='rounded-md flex-col flex items-center h-96 bg-slate-800 justify-center'>
-                        <LockKeyhole className='w-16 h-16 z-0 bottom-0 absolute' />
+                        <LockKeyhole className='w-16 h-16 z-0 bottom-64 absolute' />
                         <div />
                         <div className='flex flex-col gap-2 z-10 border p-2 border-gray-500
                         w-full rounded-md'>
@@ -83,7 +83,7 @@ const Post = ({ post, isSubscribed, admin }: { post: any, isSubscribed: boolean,
                             </div>
 
                             <Link className={buttonVariants({ className: "rounded-full w-full font-bold text-white," })} href={'/pricing'}
-                            >Pricing</Link>
+                            > <span className='text-primary-foreground'>Pricing</span>  </Link>
                         </div>
                     </div>
                 )

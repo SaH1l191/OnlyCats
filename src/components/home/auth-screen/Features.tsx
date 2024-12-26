@@ -17,38 +17,39 @@ interface FeatureProps {
 //both syntax works : ) 
 const features: { title: string, description: string, image: string }[] = [
     {
-        title: "Expert Horse Care Tips",
+        title: "Expert Cat Care Tips",
         description:
-            "Learn the best practices for keeping your horses healthy and happy. From nutrition advice to grooming.",
-        image: "/gifs/gif1.gif",
+            "Discover the best practices for keeping your cat healthy and happy. From feeding tips to grooming advice.",
+        image: "/gifs/gip5.webp",
     },
     {
-        title: "Riding Techniques",
+        title: "Cat Training Techniques",
         description:
-            "Enhance your riding skills with our detailed tutorials. Whether you're into dressage, jumping, or just casual riding, find techniques in seconds.",
-        image: "/gifs/gif2.gif",
+            "Enhance your cat's behavior with our detailed training tutorials. Whether it's litter box training or tricks, find expert advice.",
+        image: "/gifs/gif4.webp",
     },
     {
-        title: "Daily Farm Life",
-        description: "See how we care for our horses, manage the farm, and enjoy the beauty of nature.",
-        image: "/gifs/gif3.gif",
+        title: "Daily Cat Life",
+        description: "Get a glimpse into how we care for our cats, maintain their environment, and enjoy fun moments with them.",
+        image: "/gifs/gip6.webp",
     },
 ];
 
 const featureList: string[] = [
-    "Horse Health Insights",
-    "Daily Tips",
-    "Behind-the-Scenes Access",
-    "Training Tutorials",
-    "Riding Techniques",
-    "Horse Care Advice",
+    "Cat Health Insights",
+    "Daily Tips for Cats",
+    "Behind-the-Scenes with Cats",
+    "Training and Behavior Tips",
+    "Cat Playtime Ideas",
+    "Cat Care Advice",
 ];
+
 
 const Features = () => {
     return (
         <section className='container py-24 sm:py-32 space-y-8'>
             <h2 className='text-3xl lg:text-4xl font-bold md:text-center'>
-                Many <UnderlinedText className='underline-offset-8'>OnlyHorse</UnderlinedText>Features 🐴
+                Many <UnderlinedText className='underline-offset-8'>OnlyCat{" "}</UnderlinedText>Features 🐈
             </h2>
             <div className='flex flex-wrap md:justify-center gap-4'>
                 {featureList.map((feature) => (
@@ -72,7 +73,7 @@ const Features = () => {
                             <img
                                 src={image}
                                 alt='Feature Item'
-                                className='rounded w-[250px] h-32 lg:w-[300px]  mx-auto z-0 select-none pointer-events-none'
+                                className='rounded w-[200px] h-32 lg:w-[px]  mx-auto z-0 select-none pointer-events-none'
                             />
                         </CardFooter>
                     </Card>

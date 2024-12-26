@@ -32,45 +32,45 @@ const MarqueeTestimonials = () => {
 
 
 
-
     const reviews = [
         {
             name: "Jack",
             username: "@jack",
-            body: "The horse care tips are incredibly helpful. Love this site!",
+            body: "The cat care tips are incredibly helpful. Love this site!",
             img: "https://avatar.vercel.sh/jack",
         },
         {
             name: "Jill",
             username: "@jill",
-            body: "Fantastic insights on horse training. Highly recommend!",
+            body: "Fantastic insights on cat training. Highly recommend!",
             img: "https://avatar.vercel.sh/jill",
         },
         {
             name: "John",
             username: "@john",
-            body: "Great community for horse lovers. Very informative!",
+            body: "Great community for cat lovers. Very informative!",
             img: "https://avatar.vercel.sh/john",
         },
         {
             name: "Jane",
             username: "@jane",
-            body: "Wonderful content about daily farm life. Amazing!",
+            body: "Wonderful content about daily life with cats. Amazing!",
             img: "https://avatar.vercel.sh/jane",
         },
         {
             name: "Jenny",
             username: "@jenny",
-            body: "The exclusive footage is just stunning. I love it!",
+            body: "The exclusive cat footage is just stunning. I love it!",
             img: "https://avatar.vercel.sh/jenny",
         },
         {
             name: "James",
             username: "@james",
-            body: "Horse health tips are spot on. Very useful website!",
+            body: "Cat health tips are spot on. Very useful website!",
             img: "https://avatar.vercel.sh/james",
         },
     ];
+    
 
     const firstRow = reviews.slice(0, reviews.length / 2);
     const secondRow = reviews.slice(reviews.length / 2);

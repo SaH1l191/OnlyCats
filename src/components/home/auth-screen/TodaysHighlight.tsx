@@ -10,8 +10,12 @@ const TodaysHighlight = () => {
             <CldVideoPlayer
                 width="960"
                 height="540"
+                muted 
+                loop
+                 
+                bigPlayButton={true} 
                 className='rounded-md '
-                src="highlighted-vid_b928tp"
+                src="highlighted-vid__chxmxg"
             />
 
         </div>

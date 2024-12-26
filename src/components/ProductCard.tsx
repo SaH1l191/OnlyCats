@@ -26,18 +26,19 @@ const ProductCard = ({ product }: { product: any }) => {
                 <div className='flex justify-center mt-auto'>
                     {adminView && (
                         <Button
-                            className='w-full'
+                            className='w-full '
                             variant={"outline"}
 
                             disabled={isPending}
                         >
-                            {product.isArchived ? "Unarchive" : "Archive"}
+                            {product.isArchived ? <span className=''>Unarchive</span> :
+                                <span className=''>Archived</span>}
                         </Button>
                     )}
 
                     {!adminView && (
-                        <Link href={`/merch/${product.id}`} className={cn("w-full", buttonVariants())}>
-                            Buy
+                        <Link href={`/merch/${product.id}`} className={cn("w-full ", buttonVariants())}>
+                            <span className='text-primary-foreground'>Buy</span>
                         </Link>
                     )}
                 </div>
@@ -49,7 +50,7 @@ const ProductCard = ({ product }: { product: any }) => {
                             }</span>
                         )
                     }
-                    {!adminView && <span className={"text-sm font-medium text-green-500"}>In Stock</span>}
+                    {!adminView && <span className={"text-sm font-medium text-green-500 "}>In Stock</span>}
 
                 </div>
 

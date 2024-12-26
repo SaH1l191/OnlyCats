@@ -20,7 +20,7 @@ export const posts = [
 		id: 1,
 		text: "Post Content",
 		mediaType: "image",
-		mediaUrl: "/featured/featured1.jpg",
+		mediaUrl: "/featured/featured7_.jpg",
 		likes: 12,
 		isPublic: true,
 		createdAt: new Date(),
@@ -37,7 +37,7 @@ export const posts = [
 		id: 2,
 		text: "Post Content",
 		mediaType: "image",
-		mediaUrl: "/featured/featured2.jpg",
+		mediaUrl: "/featured/featured2_.jpg",
 		likes: 12,
 		isPublic: false,
 		createdAt: new Date(),
@@ -54,7 +54,7 @@ export const posts = [
 		id: 3,
 		text: "Post Content",
 		mediaType: "image",
-		mediaUrl: "/featured/featured3.jpg",
+		mediaUrl: "/featured/featured3_.jpg",
 		likes: 12,
 		isPublic: false,
 		createdAt: new Date(),
@@ -74,21 +74,21 @@ export const products = [
 		id: "1",
 		name: "Product One",
 		price: 1999, // in cents $19.99, nice to have for stripe
-		image: "/tshirts/1.png",
+		image: "/tshirts/1_.jpeg",
 		isArchived: false,
 	},
 	{
 		id: "2",
 		name: "Product Two",
 		price: 2999, // in cents $29.99
-		image: "/tshirts/2.png",
+		image: "/tshirts/2_.jpeg",
 		isArchived: true,
 	},
 	{
 		id: "3",
 		name: "Product Three",
 		price: 3999, // in cents $39.99
-		image: "/tshirts/3.png",
+		image: "/tshirts/3_.jpeg",
 		isArchived: false,
 	},
 ];

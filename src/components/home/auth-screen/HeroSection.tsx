@@ -25,7 +25,7 @@ const HeroSection = () => {
                         like.
                     </p>
                     <p className='text-2xl md:text-3xl mb-32 leading-snug text-balance'>
-                        Built for <span className='bg-sky-500 font-bold px-2 text-white'>HORSES</span> NOT{" "}
+                        Built for <span className='bg-sky-500 font-bold px-2 text-white'>CATS</span> NOT{" "}
                         <span className='bg-red-500 px-2 font-bold text-white'>OTHERS</span>
                     </p>
                     <AuthButtons />
@@ -34,8 +34,8 @@ const HeroSection = () => {
 
             <div className='flex-1 relative overflow-hidden justify-center items-center hidden md:flex'>
                 <Image
-                    src={"/horse-1.png"}
-                    alt='Horse'
+                    src={"/featured/featured8_.jpg"}
+                    alt='cattt'
                     fill
                     className='object-cover opacity-90 pointer-events-none select-none h-full'
                 />

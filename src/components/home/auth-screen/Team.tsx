@@ -13,28 +13,29 @@ const teamList: TeamProps[] = [
     {
         imageUrl: "https://i.pravatar.cc/150?img=35",
         name: "Sarah Thompson",
-        position: "Farm Manager",
-        description: "Sarah ensures the smooth operation of the farm and ensuring the well-being of all our horses. ",
+        position: "Cat Care Manager",
+        description: "Sarah ensures the well-being of all our cats, overseeing their care and daily routines.",
     },
     {
         imageUrl: "https://i.pravatar.cc/150?img=60",
         name: "James Wilson",
         position: "Head Trainer",
-        description: "James is our expert in horse training and riding instruction with over 15 years of experience",
+        description: "James is an expert in cat behavior and training, helping cats with tricks and behavioral issues.",
     },
     {
         imageUrl: "https://i.pravatar.cc/150?img=36",
         name: "Dr. Emily Carter",
-        position: "Equine Veterinarian",
-        description: "Dr. Carter is our resident veterinarian, dedicated to maintaining the health of our horses.",
+        position: "Veterinarian",
+        description: "Dr. Carter is our dedicated veterinarian, ensuring the health and wellness of all our cats.",
     },
     {
         imageUrl: "https://i.pravatar.cc/150?img=17",
         name: "Michael Ramirez",
-        position: "Groom and Stable Hand",
-        description: "Michael is responsible for the daily care of our horses, including feeding and grooming. ",
+        position: "Cat Care Specialist",
+        description: "Michael handles the daily care of our cats, from feeding to playtime and grooming.",
     },
 ];
+
 
 
 const Team = () => {

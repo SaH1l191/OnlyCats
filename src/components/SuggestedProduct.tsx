@@ -8,7 +8,7 @@ import { buttonVariants } from './ui/button'
 
 const SuggestedProduct = ({ product }: { product: any }) => {
     return (
-        <Card className=' flex flex-col'>
+        <Card className=' flex flex-col  '>
             <CardHeader className='px-2 flex flex-row items-center justify-between space-y-0 pb-0 '>
                 <CardTitle className=' text-sm font-medium'>
                     <p className='overflow-hidden w-28 text-nowrap'>{product.name}</p>
@@ -20,9 +20,9 @@ const SuggestedProduct = ({ product }: { product: any }) => {
             </CardHeader>
             <CardContent className='flex flex-col flex-1 gap-2 p-2'>
                 <ZoomedImage imgSrc={product.image} className='h-44 object-cover' />
-                <div className='flex justify-center mt-auto'>
+                <div className='flex justify-center mt-auto '>
                     <Link href={`/merch/${product.id}`} className={cn("w-full", buttonVariants({ size: "sm" }))}>
-                        Buy Now</Link>
+                        <span className='text-primary-foreground'>Buy Now</span></Link>
                 </div>
 
             </CardContent>

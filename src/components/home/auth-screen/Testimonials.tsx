@@ -1,4 +1,4 @@
- 
+
 import RotatedText from "@/components/decorators/RotatedText";
 
 
