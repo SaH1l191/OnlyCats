@@ -9,9 +9,9 @@ import TanStackProvider from "@/providers/TanStackProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-	title: "OnlyHorse - E-commerce Store",
+	title: "OnlyCatz - E-commerce Store",
 	description:
-		"OnlyHorse is a platform for horse lovers which includes a wide range of exclusive content and merchandise.",
+		"OnlyCatz is a platform for cat lovers which includes a wide range of exclusive content and merchandise.",
 };
 
 export default function RootLayout({
@@ -28,9 +28,7 @@ export default function RootLayout({
 						<div className='flex-1'>
 							<TanStackProvider>
 								{children}
-
 							</TanStackProvider>
-
 						</div>
 						<Footer />
 					</div>

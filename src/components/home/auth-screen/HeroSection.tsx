@@ -13,11 +13,11 @@ const HeroSection = () => {
                 />
                 <div className='flex flex-col gap-2 px-4 xl:ml-40 text-center md:text-start font-semibold'>
                     <Image
-                        src={"/onlyhorse.png"}
+                        src={"/final.png"}
                         alt='OnlyHorse Logo'
                         width={769}
                         height={182}
-                        className='mt-20 w-[420px] z-0 pointer-events-none select-none'
+                        className='mt-20 w-[420px] z-0 pointer-events-none select-none logo-no-white' 
                     />
 
                     <p className='text-2xl md:text-3xl text-balance'>

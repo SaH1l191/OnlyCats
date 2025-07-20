@@ -1,7 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+.logo-no-white {
+  mix-blend-mode: multiply;
+}
 
 /* //custom theme added from shad cn */
 @layer base {

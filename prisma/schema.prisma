@@ -37,7 +37,7 @@ model Post {
   mediaUrl  String?
   mediaType String?
   text      String
-  userId    String
+  userId    String  //author 
   likes     Int     @default(0)
   isPublic  Boolean @default(false)
 
@@ -51,8 +51,8 @@ model Post {
 model Comment {
   id     String @id @default(cuid())
   text   String
-  userId String
-  postId String
+  userId String //author of the comment 
+  postId String // the post on which it is commented
 
   post Post @relation(fields: [postId], references: [id])
   user User @relation(fields: [userId], references: [id])
@@ -78,7 +78,7 @@ model Like {
 model Subscription {
   id        String    @id @default(cuid())
   userId    String    @unique // (required)
-  planId    String // (required)
+  planId    String // (required) //stripe planid optional 
   price     Int       @default(0)
   startDate DateTime? @default(now()) // (optional)
   endDate   DateTime? // (optional)

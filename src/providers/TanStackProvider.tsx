@@ -5,13 +5,11 @@ const TanStackProvider = ({
     children
 }: { children: React.ReactNode }) => {
 
-    const queryClient = new QueryClient()
-
+    const queryClient = new QueryClient() 
     return (
         <div>
             <QueryClientProvider client={queryClient}>
-                {children}
-
+                {children} 
             </QueryClientProvider>
 
         </div>

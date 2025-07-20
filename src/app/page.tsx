@@ -6,8 +6,9 @@ export default async function Home() {
 
 
   const { getUser } = getKindeServerSession(); //server side 
+
   const user = await getUser()
-  console.log(user)
+  // console.log("userstatus- ", user)
 
   return (
     <main>
