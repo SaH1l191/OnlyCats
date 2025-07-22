@@ -13,6 +13,9 @@ import Image from 'next/image';
 
 import { TriangleAlert } from 'lucide-react';
 import { Checkbox } from '@/components/ui/checkbox';
+import { useMutation } from '@tanstack/react-query';
+import { createPostAction } from '../actions';
+import { useToast } from '@/hooks/use-toast';
 
 const ContentTab = () => {
 
@@ -23,14 +26,46 @@ const ContentTab = () => {
   const [isPublic, setIsPublic] = useState<boolean>(false);
   const [mediaUrl, setMediaUrl] = useState<string>("");
 
+  const { toast } = useToast()
 
+
+  const { mutate: createPost, isPending } = useMutation({
+    mutationKey: ["createPost"],
+    mutationFn: async () => createPostAction({ text, isPublic, mediaUrl, mediaType }),
+    onSuccess: () => {
+      toast({
+        title: "Post Created",
+        description: 'Post created Successfully!'
+      })
+      setText("")
+      setMediaType("video")
+      setMediaUrl("")
+      setIsPublic(false)
+
+    },
+    onError: (error) => {
+      toast({
+        title: "Error",
+        description: error.message,
+        variant: "destructive"
+      })
+      setText("")
+      setMediaType("video")
+      setMediaUrl("")
+      setIsPublic(false)
+    }
+  })
 
   return (
     <>
       <p className='text-3xl my-5 font-bold text-center uppercase'>
         <UnderlinedText className='decoration-wavy'>Share</UnderlinedText> Post
       </p>
-      <form>
+      <form onSubmit={(e) => {
+        e.preventDefault()
+        createPost()
+
+      }}>
         <Card className='w-full max-w-md mx-auto'>
           <CardHeader>
             <CardTitle className='text-2xl'>New Post</CardTitle>
@@ -119,8 +154,8 @@ const ContentTab = () => {
           </CardContent>
 
           <CardFooter>
-            <Button className='w-full' type='submit' disabled={false}>
-              {false ? "Creating Post..." : "Create Post"}
+            <Button className='w-full' type='submit' disabled={isPending}>
+              {isPending ? "Creating Post..." : "Create Post"}
             </Button>
           </CardFooter>
         </Card>

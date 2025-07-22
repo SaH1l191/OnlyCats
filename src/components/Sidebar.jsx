@@ -1,6 +1,4 @@
-
 import Link from "next/link";
-import { user } from "@/dummy_Data/index";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Shirt, Home, LayoutDashboard, User } from "lucide-react";
 import {
@@ -30,7 +28,6 @@ const SIDEBAR_LINKS = [
 const Sidebar = async () => {
 	const { getUser } = getKindeServerSession();
 	const user = await getUser();
-
 
 	const isAdmin = process.env.ADMIN_EMAIL === user?.email;
 

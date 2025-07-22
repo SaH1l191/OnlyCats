@@ -1,30 +1,50 @@
 "use client";
 import RotatedText from "@/components/decorators/RotatedText";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"; 
-import { Label } from "@/components/ui/label"; 
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
 import { CldUploadWidget, CloudinaryUploadWidgetInfo } from "next-cloudinary";
 import Image from "next/image";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { addNewProductToStoreAction } from "../actions";
+import { useToast } from "@/hooks/use-toast";
 
 
 const AddNewProductForm = () => {
 
-
+    const { toast } = useToast()
     const [name, setName] = useState("");
-	const [price, setPrice] = useState("");
-	const [imageUrl, setImageUrl] = useState("");
+    const [price, setPrice] = useState("");
+    const [imageUrl, setImageUrl] = useState("");
+    const queryClient = useQueryClient();
 
 
-
+    const { mutate: createProduct, isPending } = useMutation({
+        mutationKey: ["createProduct"],
+        mutationFn: async () => await addNewProductToStoreAction({ name, image: imageUrl, price }),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ["getAllProducts"] })
+            toast({
+                title: 'Success',
+                description: 'Product added successfully.',
+            })
+            setName("")
+            setPrice("")
+            setImageUrl("")
+        }
+    })
 
     return (
         <>
             <p className='text-3xl tracking-tighter my-5 font-medium text-center'>
                 Add <RotatedText>New</RotatedText> Product
             </p>
-            <form>
+            <form onSubmit={(e) => {
+                e.preventDefault()
+                createProduct()
+            }}>
                 <Card className='mx-auto max-w-md w-full'>
                     <CardHeader>
                         <CardTitle className='text-2xl'>New Merch</CardTitle>
@@ -79,8 +99,8 @@ const AddNewProductForm = () => {
                         )}
                     </CardContent>
                     <CardFooter>
-                        <Button className='w-full' type='submit' disabled={false}>
-                            {false ? "Adding..." : "Add Product"}
+                        <Button className='w-full' type='submit' disabled={isPending}>
+                            {isPending ? "Adding..." : "Add Product"}
                         </Button>
                     </CardFooter>
 
