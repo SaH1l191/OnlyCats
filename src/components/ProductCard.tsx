@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import { DollarSign } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
@@ -5,11 +6,35 @@ import ZoomedImage from './ZoomedImage';
 import { Button, buttonVariants } from "./ui/button";
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { toggleProductArchiveAction } from '@/app/secret-dashboard/actions';
+import { useToast } from '@/hooks/use-toast';
 
-const ProductCard = ({ product }: { product: any }) => {
+const ProductCard = ({ product,adminView= false }: { product: any ,adminView?:boolean}) => {
 
-    const adminView = false
-    const isPending = false;
+    const { toast } = useToast()
+    const queryClient = useQueryClient()
+    const { mutate: toggleArchive, isPending } = useMutation({
+        mutationKey: ["toggleArchive"],
+        mutationFn: async () => await toggleProductArchiveAction(product.id),
+        onError: (error) => {
+            toast({
+                title: "Error",
+                description: error.message,
+                variant: "destructive"
+            })
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries({queryKey :["getAllProducts"]})
+            toast({
+                title: "Success",
+                description: `Product ${product.isArchived ? "unarchived " : "archived "}  
+                successfully ! `
+            })
+        }
+    })
+
+
     return (
         <Card className=' flex flex-col'>
             <CardHeader className='px-2 flex flex-row items-center justify-between space-y-0 pb-2 '>
@@ -28,7 +53,7 @@ const ProductCard = ({ product }: { product: any }) => {
                         <Button
                             className='w-full '
                             variant={"outline"}
-
+                            onClick={()=>toggleArchive()}
                             disabled={isPending}
                         >
                             {product.isArchived ? <span className=''>Unarchive</span> :
@@ -45,7 +70,7 @@ const ProductCard = ({ product }: { product: any }) => {
                 <div className='my-1 mx-2 '>
                     {
                         adminView && (
-                            <span className={`text-sm font-medium ${product.isArchived ? "text-red-500" : "text-blue-500"}`}>{product.isArchived ?
+                            <span className={`text-sm font-medium ${product.isArchived ? "text-red-500" : "text-green-500"}`}>{product.isArchived ?
                                 "Archived " : "Live"
                             }</span>
                         )

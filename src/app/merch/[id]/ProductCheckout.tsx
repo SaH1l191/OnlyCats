@@ -6,9 +6,10 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { Product } from "@prisma/client";
 
 
-const ProductCheckout = ({ product }: { product: any }) => {
+const ProductCheckout = ({ product }: { product: Product }) => {
 
     const [selectedSize, setSelectedSize] = useState<string | null>(null)
     const router = useRouter();
@@ -34,7 +35,7 @@ const ProductCheckout = ({ product }: { product: any }) => {
 				</Select>
 
 				<Button
-					className='mt-5 text-white px-5 py-2 rounded-md'
+					className='mt-5  px-5 py-2 rounded-md'
 					disabled={false}
 					size={"sm"} 
 				>

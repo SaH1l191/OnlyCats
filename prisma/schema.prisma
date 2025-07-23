@@ -18,7 +18,7 @@ model User {
   //Universally Unique Identifier
   id           String  @id @default(cuid())
   name         String
-  email        String
+  email        String  @unique
   image        String? //(optional)
   customerId   String? @unique // for string payments 
   isSubscribed Boolean @default(false)
@@ -37,7 +37,7 @@ model Post {
   mediaUrl  String?
   mediaType String?
   text      String
-  userId    String  //author 
+  userId    String //author 
   likes     Int     @default(0)
   isPublic  Boolean @default(false)
 

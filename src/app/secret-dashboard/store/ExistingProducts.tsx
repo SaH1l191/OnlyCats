@@ -18,12 +18,12 @@ const ExistingProducts = () => {
             <p className='text-3xl tracking-tighter my-3 font-medium'>Existing Products</p>
 
             <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-                {products?.map((product) => (
-                    <ProductCard key={product.id} product={product} />
+                {products?.products.map((product) => (
+                    <ProductCard key={product.id} adminView={true} product={product} />
                 ))}
             </div>
 
-            {!isLoading && products?.length === 0 && (
+            {!isLoading && products?.products?.length === 0 && (
                 <div className='flex flex-col items-center justify-center mt-10 p-6 bg-secondary rounded-lg shadow-md'>
                     <X className='h-16 w-16 text-red-600' />
                     <p className='text-center text-xl text-red-600 font-semibold mt-4'>No products found</p>

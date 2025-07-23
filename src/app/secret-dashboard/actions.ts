@@ -4,8 +4,14 @@ import prisma from "@/db/prisma"
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
 
 
-//todo - create Reusable function of user 
-//  and test createProduct and fetch all products
+async function checkIfAdmin() {
+    const { getUser } = getKindeServerSession()
+    const user = await getUser()
+    const isAdmin = user?.email === process.env.ADMIN_EMAIL
+    if (!user || !isAdmin) return false
+    return user
+}
+
 
 type PostArgs = {
     text: string,
@@ -15,13 +21,10 @@ type PostArgs = {
 
 }
 export async function createPostAction({ isPublic, mediaUrl, mediaType, text }: PostArgs) {
-    const { getUser } = getKindeServerSession()
-    const user = await getUser()
-    const isAdmin = user?.email === process.env.ADMIN_EMAIL
-    if (!user && !isAdmin) {
+    const user = await checkIfAdmin()
+    if (!user) {
         throw new Error("Unauthorized")
     }
-
     const newPost = await prisma.post.create({
         data: {
             text,
@@ -36,14 +39,12 @@ export async function createPostAction({ isPublic, mediaUrl, mediaType, text }: 
 
 
 export async function getAllProductionAction() {
-    const { getUser } = getKindeServerSession()
-    const user = await getUser()
-    const isAdmin = user?.email === process.env.ADMIN_EMAIL
-    if (!user && !isAdmin) {
+    const user = await checkIfAdmin()
+    if (!user) {
         throw new Error("Unauthorized")
     }
     const products = await prisma.product.findMany()
-    return products
+    return { success: true, products}
 }
 
 type ProductArgs = {
@@ -53,10 +54,8 @@ type ProductArgs = {
 }
 
 export async function addNewProductToStoreAction({ name, image, price }: ProductArgs) {
-    const { getUser } = getKindeServerSession()
-    const user = await getUser()
-    const isAdmin = user?.email === process.env.ADMIN_EMAIL
-    if (!user && !isAdmin) {
+    const user = await checkIfAdmin()
+    if (!user) {
         throw new Error("Unauthorized")
     }
     if (!name || !image || !price) {
@@ -74,4 +73,28 @@ export async function addNewProductToStoreAction({ name, image, price }: Product
         }
     })
     return { success: true, product: newProduct }
+}
+
+export async function toggleProductArchiveAction (productId: string){
+    const isAdmin = await checkIfAdmin()
+    if(!isAdmin) throw new Error("Unauthorized")
+
+    const product = await prisma.product.findFirst({
+        where:{
+            id: productId
+        }
+    })
+    if(!product ) throw new Error("Product not found")
+
+    const updatedProduct = await prisma.product.update({
+        where : {
+            id : productId
+        },
+        data:{
+            isArchived: !product.isArchived
+        }
+    })
+    return { success: true, product: updatedProduct}
+
+
 }

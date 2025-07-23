@@ -5,8 +5,9 @@ import Link from 'next/link'
 import ZoomedImage from './ZoomedImage'
 import { cn } from '@/lib/utils'
 import { buttonVariants } from './ui/button'
+import { Product } from '@prisma/client'
 
-const SuggestedProduct = ({ product }: { product: any }) => {
+const SuggestedProduct = ({ product }: { product: Product }) => {
     return (
         <Card className=' flex flex-col  '>
             <CardHeader className='px-2 flex flex-row items-center justify-between space-y-0 pb-0 '>

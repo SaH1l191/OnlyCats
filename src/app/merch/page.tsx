@@ -1,10 +1,18 @@
 import BaseLayout from '@/components/BaseLayout'
 import UnderlinedText from '@/components/decorators/UnderlinedText'
 import ProductCard from '@/components/ProductCard'
+import prisma from '@/db/prisma'
 import { products } from '@/dummy_Data'
 import React from 'react'
 
-const Merch = () => {
+const Merch = async() => {
+
+    const products = await prisma.product.findMany({
+        where :{
+            isArchived : false
+        }
+    })
+
     return (
         <BaseLayout renderRightPanel={false}>
             <div className='px-3 md:px-10 my-10'>
@@ -13,7 +21,7 @@ const Merch = () => {
                 </h1>
                 <div className='grid gap-5 grid-cols-1 md:grid-cols-2'>
                     {products.map((product) => (
-                        <ProductCard key={product.id} product={product} />
+                        <ProductCard key={product.id}  product={product} />
                     ))}
                 </div>
 

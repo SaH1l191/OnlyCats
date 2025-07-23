@@ -1,37 +1,41 @@
-
+"use client"
 import React, { useState } from 'react'
 import Post from './Post'
 import UnderlinedText from '@/components/decorators/UnderlinedText'
 import PostSkeleton from '@/components/skeletons/PostSkeleton'
-import { posts, user } from '@/dummy_Data'
-import { admin } from '../../../dummy_Data/index';
+import { User } from '@prisma/client'
+import { useQuery } from '@tanstack/react-query'
+import { getPosts } from './actions'
 
-const Posts = () => {
+const Posts = ({ admin, isSubscribed }: {
+  admin: User,
+  isSubscribed: boolean
+}) => {
 
-  const isLoading = false
+  const {data:data,isLoading} = useQuery({
+    queryKey: ["posts"],
+    queryFn:async()=>await getPosts(),
+  }) 
 
   return (
     <div>
-
-
-    {
-      !isLoading && posts.map(post=>
-        <Post key={post.id} post={post}  admin={admin} isSubscribed ={user.isSubscribed}/>
+      {!isLoading && data?.posts.map(post =>
+        <Post key={post.id} post={post} admin={admin} isSubscribed={isSubscribed} />
       )
-    }
+      }
 
 
-    {
-      isLoading && (
-        <div className='mt-10 px-3 flex flex-col gap-10'>
-          {
-            [...Array(10)].map((_,index)=>(
-              <PostSkeleton key={index}/>
-            ))
-          }
-        </div>
-      )
-    }
+      {
+        isLoading && (
+          <div className='mt-10 px-3 flex flex-col gap-10'>
+            {
+              [...Array(10)].map((_, index) => (
+                <PostSkeleton key={index} />
+              ))
+            }
+          </div>
+        )
+      }
 
 
 
@@ -39,7 +43,7 @@ const Posts = () => {
       {/* <Post/>
       <Post/>
       <Post/> */}
-      {!isLoading && posts.length === 0 && (
+      {!isLoading && data?.posts.length === 0 && (
         <div className='mt-10 px-3' >
           <div className='flex flex-col items-center space-y-3 md:w-3/4 w-full mx-auto'>
             <p className='text-xl font-semibold'>No Posts <UnderlinedText>
@@ -53,7 +57,7 @@ const Posts = () => {
         </div>
       )}
 
-      
+
     </div>
   )
 }
